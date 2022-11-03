@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: Montserrat;
+    font-weight: 300;
+}
+
+b {
+    font-weight: 500;
+}
+
+.container {
+    padding: 5% 15%;
+}
+
+.header {
+    text-align: center;
+}
+
+.flex-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.content {
+    margin-top: 5%;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+
+.input-block {
+    width: 35%;
+}
+
+.input-block label {
+    font-family: Montserrat;
+    font-size: 15px;
+}
+
+.input-block:last-child {
+    margin-top: 10px;
+}
+
+.required-input {
+    color: #830000;
+}
+
+.input {
+    width: 100%;
+    margin: 10px 0 10px 0;
+    border: 1px #b1b1b1 solid;
+    border-radius: 3px;
+}
+
+.text-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-part p {
+    color: #830000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+.input[type='text'],
+.input[type='email'],
+.input[type='date'] {
+    padding: 5px;
+    font-size: 15px;
+}
+
+.input[type='file'] {
+    border: none;
+    font-family: Montserrat;
+}
+
+.input[type='submit'] {
+    border: 2px #b1b1b1 solid;
+    font-family: Montserrat;
+    padding: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.input[type='submit']:hover {
+    background: #b1b1b1;
+}
+
+.required-tip {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+.input:focus-visible {
+    border: 1px #373737 solid;
+    outline: none;
+}
+
+.empty-notes {
+    text-align: center;
+    font-family: Montserrat;
+}
+
+.table {
+    display: table;
+    width: 95vw;
+    margin: auto;
+    padding: 0;
+    border-collapse: collapse;
+    line-height: 20px;
+    color: #000;
+    font-family: Montserrat;
+}
+
+.users-table {
+    margin: 0;
+    width: 100% !important;
+}
+
+.table th {
+    letter-spacing: 1px;
+    background-color: #b1b1b1;
+    font-weight: bold;
+    font-weight: 500;
+}
+
+.table td {
+    border-bottom: 1px solid #ededed !important;
+    font-size: 13px;
+    word-break: break-word;
+}
+
+.table th,
+.table td {
+    padding: 15px;
+    text-align: center;
+}
+
+.table tr {
+    transition: all .3s;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: keep-all;
+}
+
+.table tr:hover {
+    background: #b1b1b1;
+}
+
+.note-link {
+    color: #000;
+    text-decoration: none;
+    font-family: Montserrat;
+}
+
+.note-link:visited {
+    color: #000;
+}
+
+.links {
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.to-main {
+    margin-left: 25px;
+}
+
+.link {
+    color: #000;
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: 25px;
+    background: #b1b1b1;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: Montserrat;
+}
+
+.link:last-child {
+    margin-bottom: 0;
+}
+
+.note-block {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.note-block p {
+    font-family: Montserrat;
+    margin-bottom: 10px;
+}
+
+.photo {
+    margin-bottom: 50px;
+}
