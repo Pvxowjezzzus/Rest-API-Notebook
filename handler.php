@@ -160,60 +160,62 @@ class Handler
     }
 
     public function uploadImage(){
-        
-        $allowed_types = [IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_JPEG2000, IMAGETYPE_BMP, IMAGETYPE_GIF, IMAGETYPE_JPX];
-  
-        if($_FILES['photo']['size'] > 0 ) {
-           if (!in_array(exif_imagetype($_FILES['photo']['tmp_name']),$allowed_types)) {
-            $this->errors[] = 'photo';
-            }  
-            else {
-                
-                $tmpname = $_FILES['photo']['tmp_name'];
-                $uploadImage = basename($_FILES['photo']['name']);
-    
-                $path = "content/images/";
-                static $randStr = '0123456789abcdefghijklmnopqrstuvwxyz';
-                $randname = '';
-                for ($i = 0; $i < 10; $i++) {
-                    $key = rand(0, strlen($randStr) - 1);
-                    $randname .= $randStr[$key];
-                }
-            
-                $uploadImageName = trim(strip_tags($uploadImage));
-                $path_info = pathinfo($uploadImageName);
-                $extension =  $path_info['extension'];
-                $file = $randname . '.' . $extension;
-                if (!move_uploaded_file($tmpname, $path.$file)) {
-                $this->error = 'Ошибка загрузки изображения';
-                }
-                else {
-                    $size = GetImageSize($path.$file);
-                    $this->filePath = $file;
-                    if(isset($_SESSION['photo']) && !empty($_SESSION['photo']) && $_SESSION['photo'] !== 'null') { 
-                       unlink($path.$_SESSION['photo']); 
-                    }
-                    $_SESSION['photo'] = $file;
-                }
-               
-                if ($size[0] > 1070 || $size[1] > 540) {
-                    include('libs/Images.php');
-                    $image = new Images();
-                    $image->load($path.$file);
-                    $image->resize(1070, 540);
-                    $image->save($path.$file);
+        $query = $this->db->column("SELECT photo FROM notes WHERE id = '".$_SESSION['id']."'");
+        if($query !== 'null' && !empty($query)){
 
-                }
-
-        
-               
-            }
+            $this->filePath = $query;
         }
         else {
             $this->filePath = 'null';
         }
-}
+            $allowed_types = [IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_JPEG2000, IMAGETYPE_BMP, IMAGETYPE_GIF, IMAGETYPE_JPX];
+            if($_FILES['photo']['size'] > 0 ) {
+            if (!in_array(exif_imagetype($_FILES['photo']['tmp_name']),$allowed_types)) {
+                $this->errors[] = 'photo';
+                }  
+                else {
+                    
+                    $tmpname = $_FILES['photo']['tmp_name'];
+                    $uploadImage = basename($_FILES['photo']['name']);
+        
+                    $path = "content/images/";
+                    static $randStr = '0123456789abcdefghijklmnopqrstuvwxyz';
+                    $randname = '';
+                    for ($i = 0; $i < 10; $i++) {
+                        $key = rand(0, strlen($randStr) - 1);
+                        $randname .= $randStr[$key];
+                    }
+                
+                    $uploadImageName = trim(strip_tags($uploadImage));
+                    $path_info = pathinfo($uploadImageName);
+                    $extension =  $path_info['extension'];
+                    $file = $randname . '.' . $extension;
+                    if (!move_uploaded_file($tmpname, $path.$file)) {
+                    $this->error = 'Ошибка загрузки изображения';
+                    }
+                    else {
+                        $size = GetImageSize($path.$file);
+                        $this->filePath = $file;
+                        if(isset($_SESSION['photo']) && !empty($_SESSION['photo']) && $_SESSION['photo'] !== 'null') { 
+                        unlink($path.$_SESSION['photo']); 
+                        }
+                        
+                    }
+                    $_SESSION['photo'] = $file;
+                    if ($size[0] > 1070 || $size[1] > 540) {
+                        include('libs/Images.php');
+                        $image = new Images();
+                        $image->load($path.$file);
+                        $image->resize(1070, 540);
+                        $image->save($path.$file);
 
+                    }
+
+
+            }
+
+    }
+    }
 }
 
 
