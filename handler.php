@@ -5,6 +5,7 @@ use notebook\libs\Images;
    
 class Handler 
 {
+    
     private $errors = [];
     private $db;
     public $query;
@@ -21,7 +22,7 @@ class Handler
              unlink($path.$photo);
            }
            $this->db->query("DELETE FROM notes WHERE id = ".$_GET['id']."");
-           header("Location: http:/notebook/notes.php"); 
+           header("Location: http://notebook/notes.php"); 
            exit;
         }
         
@@ -89,7 +90,7 @@ class Handler
     public function showNote(){
         $this->query =  $this->db->row('SELECT * FROM notes WHERE id='.$_GET["id"].'');
         if(!$this->query){
-            header("Location: http://notebookf/notes.php"); 
+            header("Location: http://notebook/notes.php"); 
             exit;
         }
         return $this->query;
