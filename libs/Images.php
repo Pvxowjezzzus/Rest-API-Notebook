@@ -1,7 +1,7 @@
 <?php
 
 
-namespace testtask\libs;
+namespace notebook\libs;
 
 
 class Images
