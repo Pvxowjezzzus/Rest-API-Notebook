@@ -1,6 +1,6 @@
 <?php
 
-use testtask\Handler;
+use notebook\Handler;
 
 include('handler.php');
 $handler = new Handler;

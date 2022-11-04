@@ -1,7 +1,7 @@
 <?php
 
 
-namespace testtask\libs;
+namespace notebook\libs;
 
 use PDO;
 class Db

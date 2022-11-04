@@ -1,8 +1,8 @@
 <?php
-namespace testtask;
-use testtask\libs\Db;
-use testtask\libs\Images;
-
+namespace notebook;
+use notebook\libs\Db;
+use notebook\libs\Images;
+   
 class Handler 
 {
     private $errors = [];
@@ -21,14 +21,14 @@ class Handler
              unlink($path.$photo);
            }
            $this->db->query("DELETE FROM notes WHERE id = ".$_GET['id']."");
-           header("Location: http://testtask/notes.php"); 
+           header("Location: http:/notebook/notes.php"); 
            exit;
         }
         
         if(!empty($_SESSION['id'])){
             $check = $this->db->row('SELECT * FROM notes WHERE id='.$_SESSION["id"].'');
             if(!$check){
-                header("Location: http://testtask/"); 
+                header("Location: http://notebook/"); 
                 exit;
             }
         }
@@ -89,7 +89,7 @@ class Handler
     public function showNote(){
         $this->query =  $this->db->row('SELECT * FROM notes WHERE id='.$_GET["id"].'');
         if(!$this->query){
-            header("Location: http://testtask/notes.php"); 
+            header("Location: http://notebookf/notes.php"); 
             exit;
         }
         return $this->query;
